@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .header {
+        background-color: rgb(245, 238, 238);
+        border-color: black;
+        border: 5px solid black;
+        padding: 10px;
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        height: 40px;
+        margin-top: 5px;
+        margin-left: 5px;
+        margin-right: 5px;
+      }
+  
+      .header a {
+        color: rgb(12, 11, 11);
+        text-decoration: none;
+      }
+  
+      .header a:last-child {
+        margin-right: 0px;
+      }
+  
+      .header .divider {
+        color: rgb(21, 18, 18);
+        margin: 0 10px;
+      }
+      .container{
+        border: 5px solid black;
+       }
+       .header1 {
+        background-color: rgb(245, 238, 238);
+        border-color: black;
+        border: 5px solid black;
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 750px;
+        margin-top: 8px;
+        margin-left: 5px;
+        margin-right: 5px;
+        margin-bottom: 8px;
+      }
+
+    </style>
+  </head>
+ <body>
+<div class="container">
+    
+    <div class="header">
+      <a href="/">Main menu</a>
+      <span class="divider">|</span>
+      <a href="/menu1">Menu 1</a>
+      <span class="divider">|</span>
+      <a href="/menu2">Menu 2</a>
+    </div>
+       <div class="header1">
+        <form>
+            <div>
+              <label for="inputValue">Input value:</label>
+              <input type="text" id="inputValue" name="inputValue">
+              <button type="submit" id="submit-btn">Submit</button>
+            </div>
+        </form>
+    </div>
+    <h3>Web application</h3>
+</body>
+
+<script>
+  const submitBtn = document.getElementById("submit-btn");
+  submitBtn.addEventListener("click", async (event) => {
+    event.preventDefault();
+    const inputValue = document.getElementById("inputValue").value;
+    try {
+      const response = await fetch("/menu2", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ inputValue })
+      });
+      const result = await response.json();
+      console.log("Success:", result);
+      document.getElementById("inputValue").value = "";
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  });
+</script>
