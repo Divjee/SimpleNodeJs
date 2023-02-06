@@ -12,4 +12,6 @@ After that we have to run this command below
     
 This will create needed container and connection to the database(Postgres)
 
-Now we can use the app. 
+Now we can use the app. To run the app type in the terminal
+
+    node app.js
